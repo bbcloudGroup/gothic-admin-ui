@@ -41,18 +41,18 @@ class Settings extends Component<SettingsProps, SettingsState> {
           defaultMessage="Security Settings"
         />
       ),
-      binding: (
-        <FormattedMessage
-          id="accountandsettings.menuMap.binding"
-          defaultMessage="Account Binding"
-        />
-      ),
-      notification: (
-        <FormattedMessage
-          id="accountandsettings.menuMap.notification"
-          defaultMessage="New Message Notification"
-        />
-      ),
+      // binding: (
+      //   <FormattedMessage
+      //     id="accountandsettings.menuMap.binding"
+      //     defaultMessage="Account Binding"
+      //   />
+      // ),
+      // notification: (
+      //   <FormattedMessage
+      //     id="accountandsettings.menuMap.notification"
+      //     defaultMessage="New Message Notification"
+      //   />
+      // ),
     };
     this.state = {
       mode: 'inline',

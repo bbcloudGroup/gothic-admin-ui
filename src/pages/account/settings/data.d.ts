@@ -25,6 +25,8 @@ export interface NoticeType {
 }
 
 export interface CurrentUser {
+  profile: string;
+  userid: string;
   avatar: string;
   email: string;
   name: string;
@@ -40,3 +42,5 @@ export interface CurrentUser {
   address: string;
   phone: string;
 }
+
+

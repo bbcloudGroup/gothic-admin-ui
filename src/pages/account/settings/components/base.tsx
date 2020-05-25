@@ -7,6 +7,8 @@ import { CurrentUser } from '../data.d';
 import GeographicView from './GeographicView';
 import PhoneView from './PhoneView';
 import styles from './BaseView.less';
+import { updateAccount } from '../service';
+import Avatar from './Avatar'
 
 const { Option } = Select;
 
@@ -89,9 +91,13 @@ class BaseView extends Component<BaseViewProps> {
     this.view = ref;
   };
 
-  handleFinish = (value) => {
-    console.log(value)
-    message.success(formatMessage({ id: 'accountandsettings.basic.update.success' }));
+  handleFinish = async (value) => {
+    const response = await updateAccount(value)
+    if (response.status == "ok") {
+      message.success(response.message); 
+    } else {
+      message.error(response.message); 
+    }
   };
 
 
@@ -131,7 +137,7 @@ class BaseView extends Component<BaseViewProps> {
             >
               <Input />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               name="profile"
               label={formatMessage({ id: 'accountandsettings.basic.profile' })}
               rules={[
@@ -199,7 +205,7 @@ class BaseView extends Component<BaseViewProps> {
               ]}
             >
               <PhoneView />
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item>
               <Button htmlType="submit" type="primary">
                 <FormattedMessage
@@ -208,11 +214,14 @@ class BaseView extends Component<BaseViewProps> {
                 />
               </Button>
             </Form.Item>
+
           </Form>
+
         </div>
         <div className={styles.right}>
-          <AvatarView avatar={this.getAvatarURL()} />
+          <Avatar avatar={this.getAvatarURL()} />
         </div>
+
       </div>
     );
   }
